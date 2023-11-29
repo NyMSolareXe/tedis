@@ -135,15 +135,15 @@ var Protocol = /** @class */ (function () {
         }
         var length = parameters.length;
         var parameter;
-        var request = "*".concat(length, "\r\n");
+        var request = "*" + length + "\r\n";
         for (var i = 0; i < length; i++) {
             parameter = parameters[i];
             if (typeof parameter === "string") {
-                request += "$".concat(Buffer.byteLength(parameter), "\r\n").concat(parameter, "\r\n");
+                request += "$" + Buffer.byteLength(parameter) + "\r\n" + parameter + "\r\n";
             }
             else if (typeof parameter === "number") {
                 parameter = parameter.toString();
-                request += "$".concat(Buffer.byteLength(parameter), "\r\n").concat(parameter, "\r\n");
+                request += "$" + Buffer.byteLength(parameter) + "\r\n" + parameter + "\r\n";
             }
             else {
                 throw new Error("encode ags err");
