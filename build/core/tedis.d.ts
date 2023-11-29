@@ -1,4 +1,7 @@
 import { Base, BaseParams } from "./base";
+export declare function Array2Object(array: any[]): {
+    [propName: string]: string;
+};
 export declare class Tedis extends Base {
     constructor(options?: BaseParams);
     /*******************************************************************************************************

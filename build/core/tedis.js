@@ -76,9 +76,16 @@ var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
     return to.concat(ar || Array.prototype.slice.call(from));
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Tedis = void 0;
+exports.Tedis = exports.Array2Object = void 0;
 var base_1 = require("./base");
-var tools_1 = require("src/util/tools");
+function Array2Object(array) {
+    var obj = {};
+    for (var i = 0, len = array.length; i < len; i++) {
+        obj[array[i]] = array[++i];
+    }
+    return obj;
+}
+exports.Array2Object = Array2Object;
 var Tedis = /** @class */ (function (_super) {
     __extends(Tedis, _super);
     function Tedis(options) {
@@ -621,7 +628,7 @@ var Tedis = /** @class */ (function (_super) {
             return __generator(this, function (_b) {
                 switch (_b.label) {
                     case 0:
-                        _a = tools_1.Array2Object;
+                        _a = Array2Object;
                         return [4 /*yield*/, this.command("HGETALL", key)];
                     case 1: return [2 /*return*/, _a.apply(void 0, [_b.sent()])];
                 }
@@ -1390,7 +1397,7 @@ var Tedis = /** @class */ (function (_super) {
                 switch (_b.label) {
                     case 0:
                         if (!("WITHSCORES" === withscores)) return [3 /*break*/, 2];
-                        _a = tools_1.Array2Object;
+                        _a = Array2Object;
                         return [4 /*yield*/, this.command("ZRANGE", key, start, stop, "WITHSCORES")];
                     case 1: return [2 /*return*/, _a.apply(void 0, [_b.sent()])];
                     case 2: return [2 /*return*/, this.command("ZRANGE", key, start, stop)];
@@ -1427,14 +1434,14 @@ var Tedis = /** @class */ (function (_super) {
                         if (!("object" === typeof options.limit)) return [3 /*break*/, 4];
                         _a = options.limit, offset = _a.offset, count = _a.count;
                         if (!("WITHSCORES" === options.withscores)) return [3 /*break*/, 2];
-                        _b = tools_1.Array2Object;
+                        _b = Array2Object;
                         return [4 /*yield*/, this.command("ZRANGEBYSCORE", key, min, max, "WITHSCORES", "LIMIT", offset, count)];
                     case 1: return [2 /*return*/, _b.apply(void 0, [_d.sent()])];
                     case 2: return [2 /*return*/, this.command("ZRANGEBYSCORE", key, min, max, "LIMIT", offset, count)];
                     case 3: return [3 /*break*/, 7];
                     case 4:
                         if (!("WITHSCORES" === options.withscores)) return [3 /*break*/, 6];
-                        _c = tools_1.Array2Object;
+                        _c = Array2Object;
                         return [4 /*yield*/, this.command("ZRANGEBYSCORE", key, min, max, "WITHSCORES")];
                     case 5: return [2 /*return*/, _c.apply(void 0, [_d.sent()])];
                     case 6: return [2 /*return*/, this.command("ZRANGEBYSCORE", key, min, max)];
@@ -1521,7 +1528,7 @@ var Tedis = /** @class */ (function (_super) {
                 switch (_b.label) {
                     case 0:
                         if (!("WITHSCORES" === withscores)) return [3 /*break*/, 2];
-                        _a = tools_1.Array2Object;
+                        _a = Array2Object;
                         return [4 /*yield*/, this.command("ZREVRANGE", key, start, stop, "WITHSCORES")];
                     case 1: return [2 /*return*/, _a.apply(void 0, [_b.sent()])];
                     case 2: return [2 /*return*/, this.command("ZREVRANGE", key, start, stop)];
@@ -1539,14 +1546,14 @@ var Tedis = /** @class */ (function (_super) {
                         if (!("object" === typeof options.limit)) return [3 /*break*/, 4];
                         _a = options.limit, offset = _a.offset, count = _a.count;
                         if (!("WITHSCORES" === options.withscores)) return [3 /*break*/, 2];
-                        _b = tools_1.Array2Object;
+                        _b = Array2Object;
                         return [4 /*yield*/, this.command("ZREVRANGEBYSCORE", key, max, min, "WITHSCORES", "LIMIT", offset, count)];
                     case 1: return [2 /*return*/, _b.apply(void 0, [_d.sent()])];
                     case 2: return [2 /*return*/, this.command("ZREVRANGEBYSCORE", key, max, min, "LIMIT", offset, count)];
                     case 3: return [3 /*break*/, 7];
                     case 4:
                         if (!("WITHSCORES" === options.withscores)) return [3 /*break*/, 6];
-                        _c = tools_1.Array2Object;
+                        _c = Array2Object;
                         return [4 /*yield*/, this.command("ZREVRANGEBYSCORE", key, max, min, "WITHSCORES")];
                     case 5: return [2 /*return*/, _c.apply(void 0, [_d.sent()])];
                     case 6: return [2 /*return*/, this.command("ZREVRANGEBYSCORE", key, max, min)];
